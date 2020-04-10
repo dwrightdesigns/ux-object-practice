@@ -273,9 +273,8 @@ function cloneRose(plant) {
     }
     // Given a plant, clone it and return the new plant
     // Hint: You do this in the Reading!  copyObject...
-    changeColorOfPlant(clone);
-    console.log(plant)
-    console.log(clone)
+    // console.log(plant)
+    // console.log(clone)
     return clone;
 }
 
@@ -322,7 +321,17 @@ function changeColorOfPlant(plant) {
  * Otherwise you will produce flowerless roses.
  */
 function cloneAllTheRosesAndChangeTheirColors(estate) {
-    // Your Code Here! 
+    let newRoses = [];
+    estate.roseArbor.forEach(function(rose){
+        let newPlant = cloneRose(rose);
+        changeColorOfPlant(newPlant);
+        if(!newPlant.isFlawed){
+            newRoses.push(newPlant);
+        }
+    })
+
+    estate.roseArbor = estate.roseArbor.concat(newRoses);
+    return estate;
 
     // for each rose...
 
